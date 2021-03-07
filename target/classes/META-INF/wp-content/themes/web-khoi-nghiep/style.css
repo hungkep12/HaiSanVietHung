@@ -1,0 +1,19 @@
+/*
+Theme Name: Theme Thực phẩm
+Description: Theme Wordpress bán thực phẩm đẹp tuyệt vời [Full Code]
+Theme URI: https://muatheme.com/san-pham/theme-wordpress-ban-thuc-pham-dep-tuyet-voi-full-code/
+Author: MuaTheme.com
+Author URI: https://muatheme.com
+Template: flatsome
+Version: 1.0.0
+*/
+
+/*************** ADD CUSTOM CSS HERE.   ***************/
+.devvn_buy_now{
+	width:100%;
+	max-width:100%;
+	margin-top:6px;
+}
+.devvn-popup-title, .devvn-order-btn{
+background: var(--primary-color) !important;
+}
