@@ -27,9 +27,9 @@ public class ProductServices {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Object[]> findAllByNameCategory1() {
+	public List<Products> findAllByNameCategory1() {
 
-		String sql = "SELECT e.id, e.nameProduct, e.price, e.quantity, e.idCategory FROM PRODUCTS e WHERE e.idCategory='1'";
+		String sql = "SELECT * FROM PRODUCTS e WHERE e.idCategory='1'";
 		Query query = entityManager.createNativeQuery(sql, Products.class);
 		return query.getResultList();
 	}

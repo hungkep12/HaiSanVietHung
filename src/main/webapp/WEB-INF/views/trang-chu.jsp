@@ -62,21 +62,19 @@
 								<div class="col-inner">
 									<div class="video video-fit mb" style="padding-top: 56.25%;">
 										<p>
-											<iframe title="Giới thiệu cơ sở 1 Hải sản Trường Sa"
-												width="1020" height="574"
-												src="https://www.youtube.com/embed/KLZKkJSdpGM?feature=oembed"
+											<iframe width="962" height="541"
+												src="https://www.youtube.com/embed/B7IGkmt_W1c?list=PLBXjd7EFP86MO5ed1Yk9Vxxbp3PW9DgZK"
 												frameborder="0"
-												allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+												allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 												allowfullscreen></iframe>
 										</p>
 									</div>
 									<div class="video video-fit mb" style="padding-top: 56.25%;">
 										<p>
-											<iframe title="Giới thiệu cơ sở 2 Hải sản Trường Sa"
-												width="1020" height="574"
-												src="https://www.youtube.com/embed/WLMZ59daQWQ?feature=oembed"
+											<iframe width="962" height="541"
+												src="https://www.youtube.com/embed/lSVIHD-hnz4?list=PLBXjd7EFP86MO5ed1Yk9Vxxbp3PW9DgZK"
 												frameborder="0"
-												allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+												allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 												allowfullscreen></iframe>
 										</p>
 									</div>
@@ -276,131 +274,7 @@
 										class="row hide-for-medium large-columns-1 medium-columns- small-columns- row-xsmall">
 
 
-										<c:forEach var="product" items="${product}" begin="0" end="10">
-											<div class="col">
-												<div class="col-inner">
 
-													<div class="badge-container absolute left top z-1"></div>
-													<div
-														class="product-small box has-hover box-normal box-text-bottom">
-														<div class="box-image"
-															style="border-radius: 3%; width: 70%;">
-															<div class="">
-																<a href="/san-pham/${product.nameProduct }"> <img
-																	width="82px" height="82px"
-																	src="${pageContext.request.contextPath}/${product.imageProducts[1].URL }"
-																	class="lazy-load show-on-hover absolute fill hide-for-small back-image"
-																	alt="" style="width: 82px; height: 82px;" /><img
-																	width="82" height="82"
-																	src="${pageContext.request.contextPath}/${product.imageProducts[1].URL }"
-																	class="lazy-load attachment-woocommerce_thumbnail size-woocommerce_thumbnail" />
-																</a>
-															</div>
-															<div class="image-tools top right show-on-hover"></div>
-															<c:set var="isEnough" value="${-1 }"></c:set>
-															<c:if test="${product.quantity>0 }">
-																<%
-																	if (session.getAttribute("cart") == null) {
-																%>
-																<div
-																	class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
-
-																	<a href="javascript:void(0);" data-quantity="1"
-																		data-id="${product.id }"
-																		class="add-to-cart-grid no-padding is-transparent product_type_simple add_to_cart_button"
-																		aria-label="Thêm &ldquo;${product.nameProduct }&rdquo; vào giỏ hàng"
-																		rel="nofollow">
-																		<div class="cart-icon tooltip is-small"
-																			title="Mua hàng">
-																			<strong>+</strong>
-																		</div>
-																	</a>
-																</div>
-																<c:set var="isEnough" value="${1 }"></c:set>
-																<%
-																	} else {
-																%>
-																<c:set var="cid" value="${-1 }"></c:set>
-																<c:forEach var="cart" items="${sessionScope.cart }"
-																	varStatus="count">
-																	<c:if test="${cart.products.id==product.id }">
-																		<c:set var="cid" value="${cart.products.id }"></c:set>
-																		<c:set var="ccount" value="${count.index }"></c:set>
-																	</c:if>
-																</c:forEach>
-																<c:choose>
-																	<c:when test="${cid==-1 }">
-																		<div
-																			class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
-
-																			<a href="javascript:void(0);" data-quantity="1"
-																				data-id="${product.id }"
-																				class="add-to-cart-grid no-padding is-transparent product_type_simple add_to_cart_button"
-																				aria-label="Thêm &ldquo;${product.nameProduct }&rdquo; vào giỏ hàng"
-																				rel="nofollow">
-																				<div class="cart-icon tooltip is-small"
-																					title="Mua hàng">
-																					<strong>+</strong>
-																				</div>
-																			</a>
-																		</div>
-																		<c:set var="isEnough" value="${1 }"></c:set>
-																	</c:when>
-																	<c:when test="${cid==product.id }">
-																		<c:if
-																			test="${product.quantity>sessionScope.cart[ccount].quantity+1 }">
-																			<div
-																				class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
-
-																				<a href="javascript:void(0);" data-quantity="1"
-																					data-id="${product.id }"
-																					class="add-to-cart-grid no-padding is-transparent product_type_simple add_to_cart_button"
-																					aria-label="Thêm &ldquo;${product.nameProduct }&rdquo; vào giỏ hàng"
-																					rel="nofollow">
-																					<div class="cart-icon tooltip is-small"
-																						title="Mua hàng">
-																						<strong>+</strong>
-																					</div>
-																				</a>
-																			</div>
-																			<c:set var="isEnough" value="${1 }"></c:set>
-																		</c:if>
-																	</c:when>
-																</c:choose>
-																<%
-																	}
-																%>
-															</c:if>
-
-															<c:if test="${product.quantity==0 || isEnough==-1 }">
-																<div class="out-of-stock-label">Hết hàng</div>
-															</c:if>
-														</div>
-														<!-- box-image -->
-
-														<div class="box-text text-center">
-															<div class="title-wrapper">
-																<p
-																	class="category uppercase is-smaller no-text-overflow product-cat op-7">
-																	${product.category.nameCategory }</p>
-																<p class="name product-title">
-																	<a href="/san-pham/${product.nameProduct }">${product.nameProduct }</a>
-																</p>
-															</div>
-															<div class="price-wrapper">
-																<span class="price"><span
-																	class="woocommerce-Price-amount amount"><fmt:setLocale
-																			value="vn" /> <fmt:formatNumber
-																			value="${product.price }" type="currency" /></span></span>
-															</div>
-														</div>
-														<!-- box-text -->
-													</div>
-													<!-- box -->
-												</div>
-												<!-- .col-inner -->
-											</div>
-										</c:forEach>
 										<!-- col -->
 
 									</div>

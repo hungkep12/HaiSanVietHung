@@ -33,7 +33,6 @@ public class CartController {
 	@Autowired
 	private CategoriesRepository categoriesRepository;
 
-	
 	@RequestMapping(value = { "" }, method = { RequestMethod.GET })
 	public String gioHang(final ModelMap model, HttpServletRequest request, HttpServletResponse response) {
 		model.addAttribute("category", categoriesRepository.findAll());
@@ -41,46 +40,5 @@ public class CartController {
 
 		return "gio-hang";
 	}
-
-//	@SuppressWarnings("unchecked")
-//	@RequestMapping(value = { "/cart" }, method = { RequestMethod.GET })
-//	public String addToCart4(final ModelMap model, HttpServletRequest request, HttpServletResponse response) {
-//		model.addAttribute("category", categoriesRepository.findAll());
-//		model.addAttribute("policies", postsRepository.findTitlePost("chính sách"));
-//
-//		String action = request.getParameter("action");
-//		HttpSession session = request.getSession();
-//
-//		if (action.equals("delete")) {
-//			List<Items> cart = (List<Items>) session.getAttribute("cart");
-//
-//			int index = IsExisting.isExisting(Integer.parseInt(request.getParameter("id")), cart);
-//			cart.remove(index);
-//
-//			session.setAttribute("cart", cart);
-//
-//			if (cart.size() == 0)
-//				session.removeAttribute("cart");
-//
-//		}
-//		return "gio-hang";
-//	}
-
-//	@SuppressWarnings("unchecked")
-//	@PostMapping("/cart")
-//	public String updateCart(Model model, HttpServletRequest request, HttpServletResponse response) {
-//		String action = request.getParameter("action");
-//		HttpSession session = request.getSession();
-//		if (action.equals("update")) {
-//			List<Items> cart = (List<Items>) session.getAttribute("cart");
-//			String[] quantity = request.getParameterValues("quantity");
-//			for (int i = 0; i < cart.size(); i++) {
-//				cart.get(i).setQuantity(Integer.parseInt(quantity[i]));
-//			}
-//			session.setAttribute("cart", cart);
-//		}
-//
-//		return "gio-hang";
-//	}
 
 }
