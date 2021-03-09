@@ -40,6 +40,7 @@
 				  },
 				  success: function(response) {
 					  $(".cart-item").html(response);
+					  
 				  },
 				  error: function(xhr) {
 				  }

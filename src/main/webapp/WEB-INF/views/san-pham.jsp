@@ -309,7 +309,7 @@
 															type="button" value="+" class="plus button is-form">
 													</div>
 
-													<button type="submit" name="add-to-cart"
+													<button type="submit" name="add-to-cart" id="btn_add_mtp_to_cart"
 														class="single_add_to_cart_button button alt">Mua
 														hàng</button>
 
@@ -990,10 +990,12 @@
 						  },
 						  success: function(response) {
 							  $(".cart-item").html(response);
+							  
 						  },
 						  error: function(xhr) {
 						  }
 						});
+					$("#btn_add_mtp_to_cart").attr("class","single_add_to_cart_button button alt");					
 				});
 			});
 		
