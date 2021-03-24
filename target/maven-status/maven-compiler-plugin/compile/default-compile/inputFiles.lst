@@ -15,6 +15,7 @@ D:\TTTN\src\main\java\com\haisanviethung\services\AdminServices.java
 D:\TTTN\src\main\java\com\haisanviethung\entities\Items.java
 D:\TTTN\src\main\java\com\haisanviethung\controller\NewsController.java
 D:\TTTN\src\main\java\com\haisanviethung\services\OrderServices.java
+D:\TTTN\src\main\java\com\haisanviethung\controller\ajax\AjaxController.java
 D:\TTTN\src\main\java\com\haisanviethung\controller\admin\AdminAccountController.java
 D:\TTTN\src\main\java\com\haisanviethung\controller\admin\AdminPostsController.java
 D:\TTTN\src\main\java\com\haisanviethung\services\ItemServices.java

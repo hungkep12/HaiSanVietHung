@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.haisanviethung.IsExisting;
 import com.haisanviethung.entities.Items;
 import com.haisanviethung.entities.Products;
+import com.haisanviethung.other.PoliciesAndCategories;
 import com.haisanviethung.repositories.ProductsRepository;
 import com.haisanviethung.repositories.ReviewProductRepository;
 import com.haisanviethung.services.ProductServices;
@@ -37,6 +41,14 @@ public class AjaxController {
 
 	@Autowired
 	private ReviewProductServices reviewProductServices;
+
+	@Autowired
+	private PoliciesAndCategories policiesAndCategories;
+
+	private void initCandP(final ModelMap model) {
+		model.addAttribute("category", policiesAndCategories.policiesAndCategories().getCategories());
+		model.addAttribute("policies", policiesAndCategories.policiesAndCategories().getPosts());
+	}
 
 	@RequestMapping(value = "/living-search", method = { RequestMethod.GET })
 	public String livingSearch(ModelMap model,
@@ -114,7 +126,7 @@ public class AjaxController {
 
 	@PostMapping("/update-cart")
 	public String updateCart(ModelMap model, HttpServletRequest request,
-			@RequestParam(value="quantity[]") Integer[] quantity) {
+			@RequestParam(value = "quantity[]") Integer[] quantity) {
 		HttpSession session = request.getSession();
 		List<Items> cart = (List<Items>) session.getAttribute("cart");
 		for (int i = 0; i < cart.size(); i++) {
@@ -155,4 +167,5 @@ public class AjaxController {
 		}
 		return "ajax/add-to-cart";
 	}
+
 }

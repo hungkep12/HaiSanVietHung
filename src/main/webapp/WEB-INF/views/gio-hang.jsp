@@ -115,9 +115,9 @@
 															<input type="button" value="-"
 																class="minus button is-form"> <label
 																class="screen-reader-text">Số lượng</label> <input
-																type="number" class="qty text" step="1" min="0"
-																max=${cart.products.quantity } title="SL" size="4"
-																inputmode="numeric" name="quantity"
+																type="number" class="qty text" autocomplete="off"
+																step="1" min="0" max=${cart.products.quantity }
+																title="SL" size="4" inputmode="numeric" name="quantity"
 																value="${cart.quantity }"> <input type="button"
 																value="+" class="plus button is-form">
 														</div>
@@ -216,8 +216,8 @@
 							trong giỏ hàng.</p>
 						<p class="return-to-shop">
 							<a class="button primary wc-backward"
-								href="${pageContext.request.contextPath}/san-pham"> Quay
-								trở lại cửa hàng </a>
+								href="${pageContext.request.contextPath}/san-pham"> Quay trở
+								lại cửa hàng </a>
 						</p>
 					</div>
 					<%
@@ -335,7 +335,6 @@
 								$("#a-cart-form")
 										.submit(
 												function() {
-
 													var qty = [];
 													var temp = document
 															.getElementsByClassName("qty text");
@@ -353,7 +352,6 @@
 																		response) {
 																	document.location
 																			.reload(true);
-
 																},
 																error : function(
 																		xhr) {

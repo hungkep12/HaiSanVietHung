@@ -39,7 +39,8 @@
 					  id:id
 				  },
 				  success: function(response) {
-					  $(".cart-item").html(response);
+					  
+					  document.location.reload(true);
 					  
 				  },
 				  error: function(xhr) {

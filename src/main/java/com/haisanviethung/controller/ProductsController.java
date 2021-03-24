@@ -1,8 +1,5 @@
 package com.haisanviethung.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -11,19 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.haisanviethung.IsExisting;
-import com.haisanviethung.entities.Items;
-import com.haisanviethung.entities.Products;
 import com.haisanviethung.other.PoliciesAndCategories;
 import com.haisanviethung.repositories.ImageProductsRepository;
 import com.haisanviethung.repositories.ProductsRepository;
 import com.haisanviethung.repositories.ReviewProductRepository;
 import com.haisanviethung.services.ProductServices;
-import com.haisanviethung.services.ReviewProductServices;
 
 @Controller
 @RequestMapping(value = { "/san-pham" }, method = { RequestMethod.GET })

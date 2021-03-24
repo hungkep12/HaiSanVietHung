@@ -46,7 +46,7 @@
 										<th>Số lượng đã bán</th>
 										<th>Mã sản phẩm</th>
 										<th>Tên sản phẩm</th>
-										<th>Giá</th>
+										<th>Tổng doanh thu</th>
 										<th>Số lượng còn lại</th>
 										</tr>
 								</thead>
@@ -55,7 +55,7 @@
 										<th>Số lượng đã bán</th>
 										<th>Mã sản phẩm</th>
 										<th>Tên sản phẩm</th>
-										<th>Giá</th>
+										<th>Tổng doanh thu</th>
 										<th>Số lượng còn lại</th>
 									</tr>
 								</tfoot>
@@ -66,7 +66,7 @@
 											<td>${mostProduct.totalSell }</td>
 											<td>${mostProduct.id }</td>
 											<td>${mostProduct.nameProduct }</td>
-											<td><fmt:formatNumber value="${mostProduct.price }"
+											<td><fmt:formatNumber value="${mostProduct.price*mostProduct.totalSell }"
 													type="currency" />
 											<td>${mostProduct.quantity }</td>
 

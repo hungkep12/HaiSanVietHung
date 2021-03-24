@@ -14,7 +14,7 @@
 <html lang="vi-VN" class="loading-site no-js">
 <!--<![endif]-->
 <head>
-<title>${productByName[0].nameProduct }|Hải&nbsp;sản&nbsp;Việt&nbsp;Hưng</title>
+<title>${productByName[0].nameProduct }|&nbsp;Hải&nbsp;sản&nbsp;Việt&nbsp;Hưng</title>
 
 <%@ include file="/WEB-INF/views/layout/include-in-head.jsp"%>
 
@@ -206,28 +206,8 @@
 															</c:forEach>
 														</div>
 													</div>
-													<button
-														class="flickity-button flickity-prev-next-button previous"
-														type="button" aria-label="Previous">
-														<svg class="flickity-button-icon" viewBox="0 0 100 100">
-	<path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"
-																class="arrow"></path></svg>
-													</button>
-													<button
-														class="flickity-button flickity-prev-next-button next"
-														type="button" aria-label="Next">
-														<svg class="flickity-button-icon" viewBox="0 0 100 100">
-	<path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"
-																class="arrow"
-																transform="translate(100, 100) rotate(180) "></path></svg>
-													</button>
 												</figure>
-
-
 											</div>
-
-
-
 										</div>
 
 
@@ -237,8 +217,39 @@
 												<a href="/">Trang chủ</a> <span class="divider">&#47;</span>
 												<a href="/danh-muc/${productByName.category.nameCategory }">${productByName.category.nameCategory }</a>
 											</nav>
-											<h1 class="product-title product_title entry-title">${productByName.nameProduct }<c:if
-													test="${productByName.quantity==0 }">(Hết hàng)</c:if>
+											<h1 class="product-title product_title entry-title">${productByName.nameProduct }
+												<%
+													if (session.getAttribute("cart") == null) {
+												%>
+												<c:if test="${productByName.quantity==0 }">(Hết hàng)</c:if>
+												<%
+													} else {
+												%>
+												<c:set var="cid" value="${-1 }"></c:set>
+												<c:forEach var="cart" items="${sessionScope.cart }"
+													varStatus="count">
+													<c:if test="${cart.products.id==productByName.id }">
+														<c:set var="cid" value="${cart.products.id }"></c:set>
+														<c:set var="ccount" value="${count.index }"></c:set>
+													</c:if>
+												</c:forEach>
+
+												<c:choose>
+													<c:when test="${cid==-1 }">
+														<c:if test="${productByName.quantity==0 }">(Hết hàng)</c:if>
+													</c:when>
+													<c:when test="${cid==productByName.id }">
+														<c:choose>
+															<c:when
+																test="${productByName.quantity-sessionScope.cart[ccount].quantity<=0 }">
+																(Hết hàng)
+															</c:when>
+														</c:choose>
+													</c:when>
+												</c:choose>
+												<%
+													}
+												%>
 											</h1>
 
 											<div class="is-divider small"></div>
@@ -302,16 +313,18 @@
 														<input type="button" value="-"
 															class="minus button is-form"> <label
 															class="screen-reader-text" for="quantity_6002fe5e2bf47">Số
-															lượng</label> <input type="number" id="quantity_6002fe5e2bf47"
-															class="input-text qty text" step="1" min="1"
-															max="${productByName.quantity }" name="quantity"
-															value="1" title="SL" size="4" inputmode="numeric" /> <input
-															type="button" value="+" class="plus button is-form">
+															lượng</label> <input type="number" autocomplete="off"
+															id="quantity_6002fe5e2bf47" class="input-text qty text"
+															step="1" min="1" max="${productByName.quantity }"
+															name="quantity" value="1" title="SL" size="4"
+															inputmode="numeric" /> <input type="button" value="+"
+															class="plus button is-form">
 													</div>
 
-													<button type="submit" name="add-to-cart" id="btn_add_mtp_to_cart"
-														class="single_add_to_cart_button button alt">Mua
-														hàng</button>
+													<button type="submit" name="add-to-cart"
+														id="btn_add_mtp_to_cart"
+														class="single_add_to_cart_button button alt"
+														onclick="resetVal();">Mua hàng</button>
 
 												</form>
 												<%
@@ -336,30 +349,8 @@
 																	class="minus button is-form"> <label
 																	class="screen-reader-text" for="quantity_6002fe5e2bf47">Số
 																	lượng</label> <input type="number" id="quantity_6002fe5e2bf47"
-																	class="input-text qty text" step="1" min="1"
-																	max="${productByName.quantity }" name="quantity"
-																	value="1" title="SL" size="4" inputmode="numeric" /> <input
-																	type="button" value="+" class="plus button is-form">
-															</div>
-
-															<button type="submit" name="add-to-cart"
-																class="single_add_to_cart_button button alt">Mua
-																hàng</button>
-
-														</form>
-													</c:when>
-													<c:when test="${cid==productByName.id }">
-														<form class="cart" action="javascript:void(0);"
-															method="post" enctype='multipart/form-data'
-															data-id="${productByName.id }" id="add-mtp-cart">
-
-															<div class="quantity buttons_added">
-																<input type="button" value="-"
-																	class="minus button is-form"> <label
-																	class="screen-reader-text" for="quantity_6002fe5e2bf47">Số
-																	lượng</label> <input type="number" id="quantity_6002fe5e2bf47"
-																	class="input-text qty text" step="1" min="1"
-																	max="${productByName.quantity-sessionScope.cart[ccount].quantity }"
+																	autocomplete="off" class="input-text qty text" step="1"
+																	min="1" max="${productByName.quantity }"
 																	name="quantity" value="1" title="SL" size="4"
 																	inputmode="numeric" /> <input type="button" value="+"
 																	class="plus button is-form">
@@ -370,6 +361,36 @@
 																hàng</button>
 
 														</form>
+													</c:when>
+													<c:when test="${cid==productByName.id }">
+														<c:choose>
+															<c:when
+																test="${productByName.quantity-sessionScope.cart[ccount].quantity>0 }">
+																<form class="cart" action="javascript:void(0);"
+																	method="post" enctype='multipart/form-data'
+																	data-id="${productByName.id }" id="add-mtp-cart">
+
+																	<div class="quantity buttons_added">
+																		<input type="button" value="-"
+																			class="minus button is-form"> <label
+																			class="screen-reader-text"
+																			for="quantity_6002fe5e2bf47">Số lượng</label> <input
+																			type="number" id="quantity_6002fe5e2bf47"
+																			autocomplete="off" class="input-text qty text"
+																			step="1" min="0"
+																			max="${productByName.quantity-sessionScope.cart[ccount].quantity }"
+																			name="quantity" value="1" title="SL" size="4"
+																			inputmode="numeric" /> <input type="button"
+																			value="+" class="plus button is-form">
+																	</div>
+
+																	<button type="submit" name="add-to-cart"
+																		class="single_add_to_cart_button button alt">Mua
+																		hàng</button>
+
+																</form>
+															</c:when>
+														</c:choose>
 													</c:when>
 												</c:choose>
 												<%
@@ -641,25 +662,34 @@
 
 		<!-- remove from cart -->
 		<script>
-			$(document).ready(function(){
-				$(".remove").click(function(){
-					
-					var id = $(this).attr("data-id");
-					$.ajax({
-						  url: "${pageContext.request.contextPath}/ajax/remove-cart",
-						  type: "get", //send it through get method
-						  data: { 
-							  id:id
-						  },
-						  success: function(response) {
-							  document.location.reload(true);
-		
-						  },
-						  error: function(xhr) {
-						  }
-						});
-				});
-			});
+			$(document)
+					.ready(
+							function() {
+								$(".remove")
+										.click(
+												function() {
+
+													var id = $(this).attr(
+															"data-id");
+													$
+															.ajax({
+																url : "${pageContext.request.contextPath}/ajax/remove-cart",
+																type : "get", //send it through get method
+																data : {
+																	id : id
+																},
+																success : function(
+																		response) {
+																	document.location
+																			.reload(true);
+
+																},
+																error : function(
+																		xhr) {
+																}
+															});
+												});
+							});
 		</script>
 
 		<script>
@@ -971,34 +1001,47 @@
 
 							});
 		</script>
-		
+
 		<!-- add to cart -->
 		<script>
-		
-			$(document).ready(function(){
-				$("#add-mtp-cart").submit(function(){
-					
-					var id = $(this).attr("data-id");
-					var quantity = $(".product-info").find('input[name="quantity"]').val();
-					
-					$.ajax({
-						  url: "${pageContext.request.contextPath}/ajax/add-to-cart2",
-						  type: "post", //send it through get method
-						  data: { 
-							  quantity:quantity,
-							  id:id
-						  },
-						  success: function(response) {
-							  $(".cart-item").html(response);
-							  
-						  },
-						  error: function(xhr) {
-						  }
-						});
-					$("#btn_add_mtp_to_cart").attr("class","single_add_to_cart_button button alt");					
-				});
-			});
-		
+			$(document)
+					.ready(
+							function() {
+								$("#add-mtp-cart")
+										.submit(
+												function() {
+
+													var id = $(this).attr(
+															"data-id");
+													var quantity = $(
+															".product-info")
+															.find(
+																	'input[name="quantity"]')
+															.val();
+
+													$
+															.ajax({
+																url : "${pageContext.request.contextPath}/ajax/add-to-cart2",
+																type : "post", //send it through get method
+																data : {
+																	quantity : quantity,
+																	id : id
+																},
+																success : function(
+																		response) {
+																	document.location
+																			.reload(true);
+
+																},
+																error : function(
+																		xhr) {
+																}
+															});
+													$("#btn_add_mtp_to_cart")
+															.attr("class",
+																	"single_add_to_cart_button button alt");
+												});
+							});
 		</script>
 </body>
 </html>

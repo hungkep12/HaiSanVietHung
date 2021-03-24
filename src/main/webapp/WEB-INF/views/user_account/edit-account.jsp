@@ -272,6 +272,15 @@
 									}
 								}
 							})
+
+			$("#password_current").keyup(function() {
+				var password1 = $(this).val();
+				var passwordCurrent = $("#password_current").val();
+
+				if (passwordCurrent == "") {
+					$("#CheckPasswordMatch").html("");
+				}
+			})
 		});
 	</script>
 
