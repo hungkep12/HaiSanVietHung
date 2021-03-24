@@ -81,8 +81,7 @@
 							class="widget woocommerce widget_price_filter">
 							<span class="widget-title shop-sidebar">Lọc theo giá</span>
 							<div class="is-divider small"></div>
-							<form method="get"
-								action="${pageContext.request.contextPath}/san-pham">
+							<form method="get" action="${pageContext.request.contextPath}/san-pham">
 								<div class="price_slider_wrapper">
 									<div class="price_slider" style="display: none;"></div>
 									<div class="price_slider_amount" data-step="10">
@@ -182,7 +181,7 @@
 														</c:when>
 														<c:when test="${cid==product.id }">
 															<c:if
-																test="${product.quantity>sessionScope.cart[ccount].quantity+1 }">
+																test="${product.quantity>=sessionScope.cart[ccount].quantity+1 }">
 																<div
 																	class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
 																	<a href="javascript:void(0);" data-quantity="1"
@@ -275,5 +274,7 @@
 		</script>
 		<script type='text/javascript'
 			src='${pageContext.request.contextPath}/wp-content/plugins/woocommerce/assets/js/frontend/price-slider.min.js'></script>
+			
+			
 </body>
 </html>

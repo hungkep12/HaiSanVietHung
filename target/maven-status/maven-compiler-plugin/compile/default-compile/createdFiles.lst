@@ -35,6 +35,7 @@ com\haisanviethung\controller\admin\AdminPostsController.class
 com\haisanviethung\entities\ReviewProduct.class
 com\haisanviethung\controller\ProductsController.class
 com\haisanviethung\services\UserServices.class
+com\haisanviethung\controller\ajax\AjaxController.class
 com\haisanviethung\entities\Base.class
 com\haisanviethung\entities\Orders.class
 com\haisanviethung\controller\NewsController.class

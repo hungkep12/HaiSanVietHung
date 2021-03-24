@@ -119,7 +119,8 @@
 
 													<div class="badge-container absolute left top z-1"></div>
 													<div
-														class="product-small box has-hover box-normal box-text-bottom">
+														class="product-small box has-hover box-normal box-text-bottom"
+														id="product_${mostProduct.id }">
 														<div class="box-image" style="border-radius: 3%;">
 															<div class="">
 																<a href="/san-pham/${mostProduct.nameProduct }"> <img
@@ -182,7 +183,7 @@
 																	</c:when>
 																	<c:when test="${cid==mostProduct.id }">
 																		<c:if
-																			test="${mostProduct.quantity>sessionScope.cart[ccount].quantity+1 }">
+																			test="${mostProduct.quantity>=sessionScope.cart[ccount].quantity+1 }">
 																			<div
 																				class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
 
@@ -307,7 +308,8 @@
 
 													<div class="badge-container absolute left top z-1"></div>
 													<div
-														class="product-small box has-hover box-normal box-text-bottom">
+														class="product-small box has-hover box-normal box-text-bottom"
+														id="product_${product1.id }">
 														<div class="box-image" style="border-radius: 3%;">
 															<div class="">
 																<a href="/san-pham/${product1.nameProduct }"> <img
@@ -373,7 +375,7 @@
 																	</c:when>
 																	<c:when test="${cid==product1.id }">
 																		<c:if
-																			test="${product1.quantity>sessionScope.cart[ccount].quantity+1 }">
+																			test="${product1.quantity>=sessionScope.cart[ccount].quantity+1 }">
 																			<div
 																				class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
 																				<a href="javascript:void(0);" data-quantity="1"

@@ -12,7 +12,7 @@
 <!--<![endif]-->
 <head>
 <meta charset="UTF-8" />
-<title>${nameCategory }|Hải&nbsp;Sản&nbsp;Việt&nbsp;Hưng</title>
+<title>${nameCategory }|&nbsp;Hải&nbsp;Sản&nbsp;Việt&nbsp;Hưng</title>
 <%@ include file="/WEB-INF/views/layout/include-in-head.jsp"%>
 </head>
 
@@ -197,7 +197,7 @@
 														</c:when>
 														<c:when test="${cid==productByCategory.id }">
 															<c:if
-																test="${productByCategory.quantity>sessionScope.cart[ccount].quantity+1 }">
+																test="${productByCategory.quantity>=sessionScope.cart[ccount].quantity+1 }">
 																<div
 																	class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
 																	<a href="javascript:void(0);" data-quantity="1"

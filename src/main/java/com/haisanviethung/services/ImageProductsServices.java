@@ -31,7 +31,7 @@ public class ImageProductsServices {
 
 	@Transactional
 	public int deleteImgById(int id) {
-		String sql = "DELETE FROM image_products WHERE (id = '"+id+"')";
+		String sql = "DELETE FROM image_products WHERE (id = '" + id + "')";
 		Query query = entityManager.createNativeQuery(sql, ImageProducts.class);
 		return query.executeUpdate();
 	}
